@@ -1,0 +1,51 @@
+---
+import "../styles.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEOHead from "../components/SEOHead.astro";
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  minimal?: boolean;
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Winery",
+  name: site.name,
+  url: "https://6331wein.ch",
+  email: site.email,
+  foundingDate: site.founded,
+  image: new URL(withBase(site.seo.image), Astro.site).toString(),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.locality,
+    addressCountry: site.address.country,
+  },
+};
+---
+
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#241b16" />
+    <link rel="icon" type="image/webp" href={withBase("images/brandmark.webp")} />
+    <link rel="preload" href={withBase("images/hero.jpg")} as="image" />
+    <SEOHead title={Astro.props.title} description={Astro.props.description} noindex={Astro.props.noindex} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    {!Astro.props.minimal && <Header />}
+    <main id="main"><slot /></main>
+    {!Astro.props.minimal && <Footer />}
+  </body>
+</html>

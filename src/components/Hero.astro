@@ -1,0 +1,32 @@
+---
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div
+    class="hero-backdrop"
+    role="img"
+    aria-label="Luftaufnahme des Rebbergs bei der Weinrebenkapelle in Hünenberg"
+    style={`background-image: url('${withBase("images/hero.jpg")}')`}
+  ></div>
+  <div class="hero-shade"></div>
+  <div class="hero-content shell">
+    <p class="eyebrow hero-eyebrow">{site.location} · {site.region} · seit {site.founded}</p>
+    <h1 id="hero-title">Wein, der hier<br />zuhause ist.</h1>
+    <p class="hero-lead">
+      Charaktervolle Weine aus PIWI-Reben – gewachsen rund um die
+      Weinrebenkapelle, gemacht für gute Momente.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-light" href="#weine">Unsere Weine</a>
+      <a class="text-link text-link-light" href="#rebberg">Den Rebberg entdecken <span aria-hidden="true">↘</span></a>
+    </div>
+  </div>
+  <div class="hero-facts" aria-label="Kurzfakten">
+    <span><strong>500+</strong> Jahre Rebkultur</span>
+    <span><strong>4</strong> eigene Weine</span>
+    <span><strong>PIWI</strong> robust von Natur aus</span>
+  </div>
+  <a class="scroll-cue" href="#intro" aria-label="Weiter zum Inhalt"><span></span></a>
+</section>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout title="Impressum & Datenschutz" noindex minimal>
+  <section class="legal">
+    <div class="legal-shell">
+      <a class="legal-back" href={withBase("")}>← Zurück zur Website</a>
+      <p class="eyebrow">{site.name}</p>
+      <h1>Impressum & Datenschutz</h1>
+
+      <h2>Kontaktadresse</h2>
+      <p>
+        {site.name}<br />
+        Christian Kelter & Xaver Werder<br />
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.locality}<br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Haftung</h2>
+      <p>
+        Die Inhalte dieser Website werden mit Sorgfalt erstellt. Eine Gewähr
+        für Richtigkeit, Vollständigkeit und Aktualität kann dennoch nicht
+        übernommen werden. Für Inhalte verlinkter externer Websites sind
+        ausschliesslich deren Betreiber verantwortlich.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Texte, Fotografien und Gestaltung dieser Website sind urheberrechtlich
+        geschützt. Eine Verwendung ausserhalb der gesetzlichen Schranken
+        bedarf der vorherigen Zustimmung von 6331 Wein.
+      </p>
+
+      <h2>Datenschutz</h2>
+      <p>
+        Diese Website setzt keine Analyse- oder Marketing-Cookies. Das
+        Anfrageformular übermittelt keine Daten an einen Webserver. Beim
+        Absenden wird dein lokales E-Mail-Programm mit einer vorbereiteten
+        Nachricht geöffnet.
+      </p>
+      <p>
+        Wenn du uns per E-Mail kontaktierst, verwenden wir deine Angaben nur,
+        um deine Anfrage zu beantworten und die damit zusammenhängende
+        Kommunikation abzuwickeln.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

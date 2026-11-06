@@ -1,0 +1,29 @@
+---
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <span class="brand-number">{site.shortName}</span>
+      <p>Wein aus Hünenberg.<br />Ohne viel Gedöns.</p>
+    </div>
+    <div>
+      <p class="footer-label">Entdecken</p>
+      <a href={withBase("/#rebberg")}>Rebberg</a><a href={withBase("/#weine")}>Weine</a><a href={withBase("/#besuch")}>Besuch</a>
+    </div>
+    <div>
+      <p class="footer-label">Kontakt</p>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href="https://maps.google.com/?q=Maihölzli+3b,+6331+Hünenberg" target="_blank" rel="noreferrer">
+        {site.address.street}, {site.address.locality} ↗
+      </a>
+    </div>
+    <div>
+      <p class="footer-label">Rechtliches</p>
+      <a href={withBase("impressum/")}>Impressum & Datenschutz</a>
+      <p>© {new Date().getFullYear()} {site.name}</p>
+    </div>
+  </div>
+</footer>

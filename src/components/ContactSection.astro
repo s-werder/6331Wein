@@ -1,0 +1,80 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="contact section" id="kontakt">
+  <div class="shell contact-grid">
+    <div class="contact-copy reveal">
+      <p class="eyebrow">Sag Hallo</p>
+      <h2>Was dürfen wir<br />für dich öffnen?</h2>
+      <p>
+        Wein bestellen, eine Führung planen oder einfach etwas fragen:
+        Schreib uns. Wir antworten persönlich.
+      </p>
+      <div class="contact-direct">
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <address>{site.address.street}<br />{site.address.postalCode} {site.address.locality}</address>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" data-contact-form>
+      <div class="field-row">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+      </div>
+      <label>
+        <span>Ich interessiere mich für</span>
+        <select name="interest" data-interest>
+          <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+          <option value="Solaris 2025">Solaris 2025</option>
+          <option value="Sauvignac 2025">Sauvignac 2025</option>
+          <option value="Souvignier gris 2025">Souvignier gris 2025</option>
+          <option value="Divico barrique 2025">Divico barrique 2025</option>
+          <option value="Rebbergführung mit Degustation">Rebbergführung & Degustation</option>
+        </select>
+      </label>
+      <label>
+        <span>Nachricht</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button class="button button-light" type="submit">E-Mail vorbereiten <span aria-hidden="true">↗</span></button>
+      <p class="form-note" data-form-status>Die Anfrage wird in deinem E-Mail-Programm geöffnet.</p>
+    </form>
+  </div>
+</section>
+
+<script is:inline define:vars={{ email: site.email }}>
+  const form = document.querySelector("[data-contact-form]");
+  const interest = document.querySelector("[data-interest]");
+
+  document.querySelectorAll("[data-interest-value]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const requested = button.getAttribute("data-interest-value");
+      if (interest instanceof HTMLSelectElement && requested) interest.value = requested;
+      document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" });
+      window.setTimeout(() => interest?.focus(), 650);
+    });
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement) || !form.reportValidity()) return;
+
+    const data = new FormData(form);
+    const selected = String(data.get("interest"));
+    const subject = `Anfrage: ${selected}`;
+    const message = [
+      "Hallo Xavi und Christian", "", String(data.get("message")), "",
+      `Interesse: ${selected}`, `Name: ${data.get("name")}`, `E-Mail: ${data.get("email")}`,
+    ].join("\n");
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    const status = form.querySelector("[data-form-status]");
+    if (status) status.textContent = "Dein E-Mail-Programm wurde geöffnet. Danke für deine Anfrage!";
+  });
+</script>

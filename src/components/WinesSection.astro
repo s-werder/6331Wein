@@ -1,0 +1,38 @@
+---
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+---
+
+<section class="wines section" id="weine" aria-labelledby="wines-title">
+  <div class="shell">
+    <div class="section-heading section-heading-light reveal">
+      <div>
+        <p class="eyebrow">Jahrgang 2025 · AOC Zug</p>
+        <h2 id="wines-title">Vier Lieblinge.<br />Vier Charaktere.</h2>
+      </div>
+      <p>
+        75 cl, direkt bei uns erhältlich. Bestellungen und Fragen nehmen
+        wir gerne per E-Mail entgegen.
+      </p>
+    </div>
+
+    <div class="wine-list">
+      {site.wines.map((wine) => (
+        <article class="wine-card reveal">
+          <div class:list={["wine-visual", wine.tone]}>
+            <span class="wine-number">{wine.number}</span>
+            <img src={withBase(wine.image)} alt={wine.imageAlt} loading="lazy" />
+          </div>
+          <div class="wine-info">
+            <div><p class="wine-type">{wine.type}</p><h3>{wine.name}</h3></div>
+            <p>{wine.description}</p>
+            <div class="wine-meta"><span>{wine.vintage}</span><span>{wine.price}</span></div>
+            <button class="text-button" type="button" data-interest-value={`${wine.name} 2025`}>
+              {wine.action} <span>↗</span>
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+---
+
+<section class="people section" id="wir">
+  <div class="shell people-grid">
+    <div class="people-copy reveal">
+      <p class="eyebrow">Das sind wir</p>
+      <h2>Xavi, Christian<br />und viele Hände.</h2>
+      <p class="large-copy">
+        Wir sind gerne draussen, bewegen uns viel und schätzen guten
+        Genuss. Im Rebberg kommt das alles zusammen.
+      </p>
+      <p>
+        Gemeinsam arbeiten macht mehr Freude – und geteilter Genuss ist
+        doppelte Freude. Deshalb gehört 6331 Wein auch all den Menschen,
+        die mit anpacken, mitdenken und mit uns anstossen.
+      </p>
+      <div class="people-contacts">
+        {site.founders.map((person) => (
+          <a href={`mailto:${person.email}`}>{person.name} <span>↗</span></a>
+        ))}
+      </div>
+    </div>
+    <figure class="people-image reveal">
+      <img src={withBase("images/founders.jpg")} alt="Das Team bei der gemeinsamen Arbeit im Rebberg" width="1200" height="1600" loading="lazy" />
+      <figcaption>Gemeinsam geht’s besser.</figcaption>
+    </figure>
+  </div>
+</section>
