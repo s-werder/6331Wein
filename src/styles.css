@@ -155,7 +155,6 @@ h3 { font-size: clamp(2.2rem, 3vw, 3.7rem); letter-spacing: -0.04em; }
 .button-light { color: var(--ink); background: var(--paper); }
 .button-dark { color: white; background: var(--ink); }
 .text-link { font-size: 0.83rem; font-weight: 700; letter-spacing: 0.05em; text-underline-offset: 7px; }
-.text-link span { margin-left: 7px; }
 .hero-facts {
   position: absolute;
   z-index: 2;
@@ -206,7 +205,6 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
 .wine-meta { display: flex; align-items: center; gap: 22px; color: rgba(255,255,255,.82); font-size: .92rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .wine-meta span + span::before { margin-right: 22px; color: rgba(255,255,255,.3); content: "•"; }
 .text-button { justify-self: start; padding: 0 0 7px; border: 0; border-bottom: 1px solid currentColor; color: white; background: transparent; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
-.text-button span { margin-left: 7px; }
 
 .land { background: var(--paper-deep); }
 .land-grid { display: grid; grid-template-columns: .68fr 1.32fr; align-items: center; gap: clamp(50px, 8vw, 130px); }
