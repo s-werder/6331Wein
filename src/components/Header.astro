@@ -1,11 +1,12 @@
 ---
 import { site } from "../data/site";
 import { withBase } from "../lib/paths";
+import BrandNumber from "./BrandNumber.astro";
 ---
 
 <header class="site-header" data-header>
   <a class="brand" href={withBase("")} aria-label={`${site.name} – Startseite`}>
-    <span class="brand-number">{site.shortName}</span>
+    <BrandNumber />
     <span class="brand-place">Wein · {site.location}</span>
   </a>
   <button
