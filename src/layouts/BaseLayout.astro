@@ -41,6 +41,20 @@ const schema = {
     <link rel="preload" href={withBase("images/hero.jpg")} as="image" />
     <SEOHead title={Astro.props.title} description={Astro.props.description} noindex={Astro.props.noindex} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script is:inline>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+      const startAtTop = () => {
+        if (window.location.hash) return;
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
+        window.scrollTo(0, 0);
+        root.style.scrollBehavior = previousBehavior;
+      };
+
+      window.addEventListener("pageshow", startAtTop);
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Zum Inhalt springen</a>
