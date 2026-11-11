@@ -45,7 +45,7 @@ const schema = {
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
       const shouldStartAtTop = () => !window.location.hash || window.location.hash === "#top";
-      let keepTopUntil = 0;
+      let topResetTimer = 0;
 
       const resetPosition = () => {
         const root = document.documentElement;
@@ -55,34 +55,22 @@ const schema = {
         root.style.scrollBehavior = previousBehavior;
       };
 
-      const keepPositionAtTop = () => {
-        if (performance.now() < keepTopUntil && window.scrollY !== 0) resetPosition();
-      };
-
-      const releaseTopPosition = () => {
-        keepTopUntil = 0;
-      };
-
       const startAtTop = () => {
         if (!shouldStartAtTop()) return;
-        keepTopUntil = performance.now() + 3000;
-
+        window.clearInterval(topResetTimer);
         resetPosition();
-        window.requestAnimationFrame(() => {
+        const startedAt = performance.now();
+        topResetTimer = window.setInterval(() => {
           resetPosition();
-          window.requestAnimationFrame(resetPosition);
-        });
-        window.setTimeout(resetPosition, 120);
+          if (performance.now() - startedAt < 1800) return;
+          window.clearInterval(topResetTimer);
+          resetPosition();
+        }, 50);
       };
 
       document.addEventListener("DOMContentLoaded", startAtTop, { once: true });
       window.addEventListener("load", startAtTop, { once: true });
       window.addEventListener("pageshow", startAtTop);
-      window.addEventListener("scroll", keepPositionAtTop, { passive: true });
-      window.addEventListener("touchstart", releaseTopPosition, { passive: true });
-      window.addEventListener("pointerdown", releaseTopPosition, { passive: true });
-      window.addEventListener("wheel", releaseTopPosition, { passive: true });
-      window.addEventListener("keydown", releaseTopPosition);
     </script>
   </head>
   <body>
