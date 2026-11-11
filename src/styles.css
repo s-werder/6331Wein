@@ -156,16 +156,6 @@ h3 { font-size: clamp(2.2rem, 3vw, 3.7rem); letter-spacing: -0.04em; }
 .button-dark { color: white; background: var(--ink); }
 .text-link { font-size: 0.83rem; font-weight: 700; letter-spacing: 0.05em; text-underline-offset: 7px; }
 .text-link span { margin-left: 7px; }
-.hero-facts {
-  position: absolute;
-  z-index: 2;
-  right: max(32px, calc((100vw - 1320px) / 2));
-  bottom: 46px;
-  display: flex;
-  gap: 32px;
-}
-.hero-facts span { display: grid; color: rgba(255,255,255,.76); font-size: .68rem; letter-spacing: .09em; text-transform: uppercase; }
-.hero-facts strong { color: white; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; letter-spacing: 0; text-transform: none; }
 .scroll-cue { position: absolute; z-index: 2; bottom: 42px; left: 50%; width: 28px; height: 44px; border: 1px solid rgba(255,255,255,.65); border-radius: 999px; transform: translateX(-50%); }
 .scroll-cue span { position: absolute; top: 8px; left: 50%; width: 4px; height: 4px; border-radius: 50%; background: white; animation: scroll-dot 1.8s infinite; }
 
@@ -298,7 +288,6 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
   .site-nav .nav-cta { margin-top: 20px; padding: 9px 18px; font-family: var(--sans); font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
   .menu-open .site-nav { transform: translateX(0); }
   .menu-open .site-header { color: white; }
-  .hero-facts { right: 20px; bottom: 28px; left: 20px; justify-content: space-between; }
   .scroll-cue { display: none; }
   .intro-grid { grid-template-columns: 1fr; }
   .section-index { display: none; }
@@ -335,7 +324,6 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
   .hero h1 { max-width: 360px; margin-inline: auto; }
   .hero-lead { max-width: 340px; margin-inline: auto; font-size: 1.2rem; }
   .hero-actions { align-items: center; flex-direction: column; gap: 20px; }
-  .hero-facts { display: none; }
   .intro-copy,
   .story-copy,
   .section-heading,
