@@ -1,5 +1,4 @@
 ---
-import { site } from "../data/site";
 import { withBase } from "../lib/paths";
 ---
 
@@ -17,11 +16,6 @@ import { withBase } from "../lib/paths";
         doppelte Freude. Deshalb gehört 6331 Wein auch all den Menschen,
         die mit anpacken, mitdenken und mit uns anstossen.
       </p>
-      <div class="people-contacts">
-        {site.founders.map((person) => (
-          <a href={`mailto:${person.email}`}>{person.name} <span>↗</span></a>
-        ))}
-      </div>
     </div>
     <figure class="people-image reveal">
       <img src={withBase("images/founders.jpg")} alt="Das Team bei der gemeinsamen Arbeit im Rebberg" width="1200" height="1600" loading="lazy" />

@@ -203,7 +203,7 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
 .wine-type { margin-bottom: 10px; color: var(--gold); font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .wine-info h3 { margin-bottom: 0; }
 .wine-info > p { align-self: end; max-width: 390px; color: rgba(255,255,255,.65); }
-.wine-meta { display: flex; align-items: center; gap: 22px; color: rgba(255,255,255,.75); font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.wine-meta { display: flex; align-items: center; gap: 22px; color: rgba(255,255,255,.82); font-size: .92rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .wine-meta span + span::before { margin-right: 22px; color: rgba(255,255,255,.3); content: "•"; }
 .text-button { justify-self: start; padding: 0 0 7px; border: 0; border-bottom: 1px solid currentColor; color: white; background: transparent; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
 .text-button span { margin-left: 7px; }
@@ -223,8 +223,6 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
 .people-grid { display: grid; grid-template-columns: 1fr .8fr; align-items: center; gap: clamp(70px, 10vw, 160px); }
 .people-copy { max-width: 650px; }
 .people-copy > p:not(.eyebrow):not(.large-copy) { max-width: 560px; color: var(--muted); }
-.people-contacts { display: grid; margin-top: 46px; border-top: 1px solid var(--line); }
-.people-contacts a { display: flex; justify-content: space-between; padding-block: 16px; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 .people-image { margin: 0; }
 .people-image img { width: 100%; max-height: 760px; aspect-ratio: 4 / 5; object-fit: cover; }
 
@@ -238,6 +236,7 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
 .contact { color: white; background: var(--ink); }
 .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(70px, 10vw, 150px); }
 .contact .eyebrow { color: var(--gold); }
+.contact-copy h2 { letter-spacing: -0.02em; }
 .contact-copy > p:not(.eyebrow) { max-width: 520px; color: rgba(255,255,255,.6); }
 .contact-direct { display: grid; gap: 14px; margin-top: 52px; }
 .contact-direct a { font-family: var(--serif); font-size: 1.4rem; }
@@ -377,7 +376,6 @@ figcaption { margin-top: 12px; color: var(--muted); font-size: .72rem; letter-sp
   .visit-card .button { margin-inline: auto; }
   .people-image { width: 100%; }
   .people-image img { max-height: none; height: auto; aspect-ratio: auto; object-fit: contain; }
-  .people-contacts { max-width: 360px; margin-inline: auto; margin-top: 38px; }
   .news { display: block; width: var(--shell); margin-inline: auto; }
   .news img { width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
   .news-copy { padding: 56px 24px 64px; }
