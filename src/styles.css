@@ -92,7 +92,15 @@ h3 { font-size: clamp(2.2rem, 3vw, 3.7rem); letter-spacing: -0.04em; }
   backdrop-filter: blur(14px);
 }
 .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.brand-number { display: block; width: 3.05rem; height: auto; flex: 0 0 auto; color: currentColor; overflow: visible; }
+.brand-number {
+  display: block;
+  width: 3.05rem;
+  aspect-ratio: 418 / 358;
+  flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: var(--brandmark) center / contain no-repeat;
+  mask: var(--brandmark) center / contain no-repeat;
+}
 .brand-place { font-size: 0.67rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
 .site-nav { display: flex; align-items: center; gap: 30px; }
 .site-nav a { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; }

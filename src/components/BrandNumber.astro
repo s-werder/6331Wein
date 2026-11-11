@@ -1,41 +1,11 @@
 ---
 import { site } from "../data/site";
 import { withBase } from "../lib/paths";
-
-interface Props {
-  filterId: string;
-}
-
-const { filterId } = Astro.props;
 ---
 
-<svg
+<span
   class="brand-number"
-  viewBox="44 72 426 364"
   role="img"
   aria-label={site.shortName}
-  focusable="false"
->
-  <defs>
-    <filter id={filterId} x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-      <feColorMatrix
-        in="SourceGraphic"
-        type="matrix"
-        values="1 0 0 0 0
-                0 1 0 0 0
-                0 0 1 0 0
-               -1 -1 -1 0 2.5"
-        result="logo-alpha"
-      />
-      <feFlood flood-color="currentColor" result="logo-color" />
-      <feComposite in="logo-color" in2="logo-alpha" operator="in" />
-    </filter>
-  </defs>
-  <image
-    href={withBase("images/brandmark.webp")}
-    width="512"
-    height="512"
-    filter={`url(#${filterId})`}
-    aria-hidden="true"
-  />
-</svg>
+  style={`--brandmark: url("${withBase("images/brandmark-transparent.png")}")`}
+></span>
