@@ -1,7 +1,41 @@
 ---
 import { site } from "../data/site";
+import { withBase } from "../lib/paths";
+
+interface Props {
+  filterId: string;
+}
+
+const { filterId } = Astro.props;
 ---
 
-<span class="brand-number" aria-label={site.shortName}>
-  <span aria-hidden="true">6<span class="brand-number-mirrored">3</span>31</span>
-</span>
+<svg
+  class="brand-number"
+  viewBox="44 72 426 364"
+  role="img"
+  aria-label={site.shortName}
+  focusable="false"
+>
+  <defs>
+    <filter id={filterId} x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feColorMatrix
+        in="SourceGraphic"
+        type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+               -1 -1 -1 0 2.5"
+        result="logo-alpha"
+      />
+      <feFlood flood-color="currentColor" result="logo-color" />
+      <feComposite in="logo-color" in2="logo-alpha" operator="in" />
+    </filter>
+  </defs>
+  <image
+    href={withBase("images/brandmark.webp")}
+    width="512"
+    height="512"
+    filter={`url(#${filterId})`}
+    aria-hidden="true"
+  />
+</svg>
