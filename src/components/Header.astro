@@ -41,5 +41,7 @@ import BrandNumber from "./BrandNumber.astro";
   menuToggle?.addEventListener("click", () => setMenu(!body.classList.contains("menu-open")));
   nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
   window.addEventListener("keydown", (event) => event.key === "Escape" && setMenu(false));
-  window.addEventListener("scroll", () => header?.classList.toggle("is-scrolled", window.scrollY > 40), { passive: true });
+  const syncHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 40);
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
 </script>
