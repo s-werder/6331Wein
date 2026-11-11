@@ -44,16 +44,28 @@ const schema = {
     <script is:inline>
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
-      const startAtTop = () => {
-        if (window.location.hash && window.location.hash !== "#top") return;
+      const shouldStartAtTop = () => !window.location.hash || window.location.hash === "#top";
+      let keepTopUntil = 0;
 
-        const resetPosition = () => {
-          const root = document.documentElement;
-          const previousBehavior = root.style.scrollBehavior;
-          root.style.scrollBehavior = "auto";
-          window.scrollTo(0, 0);
-          root.style.scrollBehavior = previousBehavior;
-        };
+      const resetPosition = () => {
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
+        window.scrollTo(0, 0);
+        root.style.scrollBehavior = previousBehavior;
+      };
+
+      const keepPositionAtTop = () => {
+        if (performance.now() < keepTopUntil && window.scrollY !== 0) resetPosition();
+      };
+
+      const releaseTopPosition = () => {
+        keepTopUntil = 0;
+      };
+
+      const startAtTop = () => {
+        if (!shouldStartAtTop()) return;
+        keepTopUntil = performance.now() + 3000;
 
         resetPosition();
         window.requestAnimationFrame(() => {
@@ -66,6 +78,11 @@ const schema = {
       document.addEventListener("DOMContentLoaded", startAtTop, { once: true });
       window.addEventListener("load", startAtTop, { once: true });
       window.addEventListener("pageshow", startAtTop);
+      window.addEventListener("scroll", keepPositionAtTop, { passive: true });
+      window.addEventListener("touchstart", releaseTopPosition, { passive: true });
+      window.addEventListener("pointerdown", releaseTopPosition, { passive: true });
+      window.addEventListener("wheel", releaseTopPosition, { passive: true });
+      window.addEventListener("keydown", releaseTopPosition);
     </script>
   </head>
   <body>
